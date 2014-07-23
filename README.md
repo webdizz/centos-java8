@@ -1,4 +1,4 @@
-centos-java8
+centos-java8-sshd
 ============
 
 A docker build of the latest CentOS release with updates applied, and java 8 installed and SSHD included.
@@ -16,5 +16,5 @@ Versions:
 Usage:
 -------------
 
-docker run -d --rm -e ROOT_PASS="123456" -p 222:22 webdizz/centos-java8
+docker run -d --rm -e ROOT_PASS="123456" -p 222:22 webdizz/centos-java8-sshd
 ssh -p 222 root@localhost
