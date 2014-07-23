@@ -8,10 +8,12 @@ ENV	LANG en_US.UTF-8
 ENV	LC_ALL en_US.UTF-8
 
 RUN	echo "root:123456" | chpasswd
-
 RUN yum install -y pwgen openssh-server openssh-clients vim curl telnet python-setuptools; yum upgrade -y; yum update -y;  yum clean all
 RUN easy_install supervisor
-RUN curl -LO 'http://download.oracle.com/otn-pub/java/jdk/8u5-b13/jdk-8u5-linux-x64.rpm' -H 'Cookie: oraclelicense=accept-securebackup-cookie' && rpm -i jdk-8u5-linux-x64.rpm; rm -f jdk-8u5-linux-x64.rpm; yum clean all
+
+ENV JDK_VERSION 8u11
+ENV JDK_BUILD_VERSION b12
+RUN curl -LO 'http://download.oracle.com/otn-pub/java/jdk/$JDK_VERSION-$JDK_BUILD_VERSION/jdk-$JDK_VERSION-linux-x64.rpm' -H 'Cookie: oraclelicense=accept-securebackup-cookie' && rpm -i jdk-$JDK_VERSION-linux-x64.rpm; rm -f jdk-$JDK_VERSION-linux-x64.rpm; yum clean all
 ENV JAVA_HOME /usr/java/default
 
 #SSH support
